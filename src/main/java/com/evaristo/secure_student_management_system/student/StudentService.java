@@ -15,27 +15,20 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    // Get all students
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    // Get student by ID
     public Student getStudentById(Long id) {
 
         return studentRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException(
-                                "Student not found with id: " + id
-                        )
-                );
+                .orElseThrow(() ->new ResourceNotFoundException("Student not found with id: " + id));
     }
 
-    // Create student
     public Student createStudent(Student student) {
 
         if (studentRepository.existsByRegistrationNumber(
-                student.getRegistrationNumber())) {
+                student.2())) {
 
             throw new RuntimeException(
                     "Registration number already exists"
@@ -88,9 +81,7 @@ public class StudentService {
                 updatedStudent.getDateOfBirth()
         );
 
-        existingStudent.setUser(
-                updatedStudent.getUser()
-        );
+        existingStudent.setUser(updatedStudent.getUser());
 
         return studentRepository.save(existingStudent);
     }
