@@ -28,7 +28,7 @@ public class StudentService {
     public Student createStudent(Student student) {
 
         if (studentRepository.existsByRegistrationNumber(
-                student.2())) {
+                student.getRegistrationNumber())) {
 
             throw new RuntimeException(
                     "Registration number already exists"
